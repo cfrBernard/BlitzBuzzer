@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Know-it - Home</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 20px;
+        }
+        .category-div, .all-categories-div {
+            display: inline-block;
+            padding: 10px 20px;
+            margin: 5px;
+            border: 1px solid #ddd;
+            cursor: pointer;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        .category-div:hover, .all-categories-div:hover {
+            background-color: #f0f0f0;
+        }
+        .category-div.active, .all-categories-div.active {
+            background-color: #007bff;
+            color: white;
+            border-color: #007bff;
+        }
+        .category-div.inactive, .all-categories-div.inactive {
+            background-color: #f4f4f4;
+            color: #999;
+            cursor: not-allowed;
+        }
+        .difficulty-buttons button {
+            margin: 5px;
+        }
+        button {
+            padding: 10px;
+            margin: 10px;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Know-it</h1>
+    <form id="quiz-form">
+        <label for="category">Choose a category :</label>
+        <div id="categories-container">
+            <div class="all-categories-div active" data-category="">All Categories</div>
+            
+        </div>
+        <br>
+        <p>Choose the difficulty :</p>
+        <div class="difficulty-buttons">
+            <button type="button" data-difficulty="facile" class="active">easy</button>
+            <button type="button" data-difficulty="moyen">medium</button>
+            <button type="button" data-difficulty="difficile">hard</button>
+        </div>
+        <br>
+        <input type="hidden" id="selected-category" name="category" value="">
+        <input type="hidden" id="selected-difficulty" name="difficulty" value="">
+        <button type="submit">Start</button>
+    </form>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const categoriesContainer = document.getElementById('categories-container');
+            const difficultyButtons = document.querySelectorAll('.difficulty-buttons button');
+            const selectedCategoryInput = document.getElementById('selected-category');
+            const selectedDifficultyInput = document.getElementById('selected-difficulty');
+
+            function fetchCategories() {
+                fetch('https://opentdb.com/api_category.php')
+                    .then(response => response.json())
+                    .then(data => {
+                        const categories = data.trivia_categories;
+                        categories.forEach(category => {
+                            const categoryDiv = document.createElement('div');
+                            categoryDiv.className = 'category-div';
+
+                            const categoryName = category.name.replace(/^Entertainment: /, '');
+                            categoryDiv.textContent = categoryName;
+                            categoryDiv.setAttribute('data-category', category.id);
+                            categoriesContainer.appendChild(categoryDiv);
+                        });
+                    
+
+                        document.querySelectorAll('.category-div, .all-categories-div').forEach(div => {
+                            div.addEventListener('click', () => {
+                                document.querySelectorAll('.category-div, .all-categories-div').forEach(d => {
+                                    d.classList.remove('active');
+                                    d.classList.add('inactive');
+                                });
+                                div.classList.remove('inactive');
+                                div.classList.add('active');
+                                selectedCategoryInput.value = div.getAttribute('data-category');
+                            });
+                        });
+                    });
+            }
+        
+            fetchCategories();
+        
+            
+            const defaultDifficulty = 'facile';
+            difficultyButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    difficultyButtons.forEach(btn => btn.classList.remove('active'));
+                    button.classList.add('active');
+                    selectedDifficultyInput.value = button.getAttribute('data-difficulty');
+                });
+            });
+        
+            
+            const defaultDifficultyButton = Array.from(difficultyButtons).find(button => button.getAttribute('data-difficulty') === defaultDifficulty);
+            if (defaultDifficultyButton) {
+                defaultDifficultyButton.classList.add('active');
+                selectedDifficultyInput.value = defaultDifficultyButton.getAttribute('data-difficulty');
+            }
+        
+            document.getElementById('quiz-form').addEventListener('submit', function(e) {
+                e.preventDefault();
+                const category = selectedCategoryInput.value;
+                const difficulty = selectedDifficultyInput.value;
+            
+                let quizUrl = 'game.html?';
+                if (category) quizUrl += `category=${category}&`;
+                if (difficulty) quizUrl += `difficulty=${difficulty}`;
+            
+                window.location.href = quizUrl;
+            });
+        });
+
+    </script>
+</body>
+</html>
