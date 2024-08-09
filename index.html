@@ -5,62 +5,387 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Know-it - Home</title>
     <style>
+
+        @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css');
+
         body {
             font-family: Arial, sans-serif;
-            text-align: center;
-            padding: 20px;
-        }
-        .category-div, .all-categories-div {
-            display: inline-block;
-            padding: 10px 20px;
-            margin: 5px;
-            border: 1px solid #ddd;
-            cursor: pointer;
-            transition: background-color 0.3s, color 0.3s;
-        }
-        .category-div:hover, .all-categories-div:hover {
-            background-color: #f0f0f0;
-        }
-        .category-div.active, .all-categories-div.active {
-            background-color: #007bff;
-            color: white;
-            border-color: #007bff;
-        }
-        .category-div.inactive, .all-categories-div.inactive {
+            margin: 0;
+            padding: 0;
+            height: calc(var(--vh, 1vh) * 100); 
+            display: flex;
             background-color: #f4f4f4;
-            color: #999;
-            cursor: not-allowed;
+            flex-direction: column;
+            overflow-y: auto;
+            
         }
-        .difficulty-buttons button {
-            margin: 5px;
+            body p {
+                text-align: center;
+            }
+
+        #BB1Logo {
+            height: auto;
+            width: 65%;
+            margin-bottom: 40px;
         }
-        button {
-            padding: 10px;
-            margin: 10px;
+        @media (max-width: 580px) {
+                #BB1Logo {
+                    width: 75%;
+                    margin-bottom: 20px;
+                }
+            }
+            @media (max-height: 420px) {
+                #BB1Logo {
+                    width: 50%;
+                    margin-bottom: 20px;
+                }
+            }
+        
+        #quiz-form {
+            display: flex;
+            align-items: flex-start;
+            text-align: start;
+            flex-direction: column;
+            position: absolute;
+            margin-left: 1vh;
+            top: 10%;
+        }
+            span {
+                font-size: clamp(18px, 10vw, 35px);
+                margin-bottom: 5px;
+                margin-left: 15px;
+                font-weight: 600;
+                cursor: pointer;
+                color: #f0f0f0;
+            }
+                span:hover {
+                    color: white;
+                }
+                @media (max-width: 580px) {
+                    #quiz-form {
+                        top: 5%;
+                    }
+                }
+                @media (max-height: 480px) {
+                    #quiz-form {
+                        top: 0%;
+                    }
+                }
+                @media (max-height: 420px) {
+                    span {
+                        font-size: 15px;
+                    }
+                }
+        
+        footer {
+            position: absolute;
+            font-size: small;
+            text-align: left;
+            margin-left: 20px;
+            bottom: 3vh;
+        }
+            footer p.text-footer {
+                margin: 0; 
+                text-align: left; 
+            }
+                a {
+                    color: #f4f4f4;
+                }
+    </style>
+    <style>
+        .background {
+            background: linear-gradient(160deg, #00d2ff, #3a7bd5);
+            background-size: cover; 
+            background-position: center; 
+            background-repeat: no-repeat; 
+            height: 100vh;
+            width: 100vw;
+            position: absolute;
+            z-index: -1;
+        }
+    </style>
+    <style>
+        #popup-container {
+            display: none; 
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 80%;
+            max-width: 600px;
+            background-color: white;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            padding: 20px;
+            z-index: 1000; 
+            animation: fadeIn 0.5s ease-in-out;
+            height: auto;
+            
+        }
+            @keyframes fadeIn {
+                from { opacity: 0; }
+                to { opacity: 1; }
+            }
+            @media (max-height: 740px) {
+                #popup-container {
+                    height: calc(var(--vh, 1vh) * 80);
+                    overflow-y: scroll; 
+                }
+            }
+        #popup-container hr {
+            border: none;
+            height: 1px;
+            background: #ddd;
+            margin: 20px 0;
+        }
+        #popup-overlay {
+            display: none; 
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+            z-index: 999;
+        }
+        #popup-close {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 24px;
+            color: #666;
+            cursor: pointer;
+        }
+        .section-centered {
+            text-align: center;
+        }
+        .section-centered h1 {
+            font-size: 30px;
+            margin-bottom: 5px;
+            color: #222;
+        }
+        .section-centered h2 {
+            text-align: center;
+        }
+        .section {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+        .section h2 {
+            font-size: 20px;
+            margin-bottom: 10px;
+            color: #222;
+            text-align: left;
+        }
+        .section h3 {
             font-size: 16px;
+            margin-top: 15px;
+            margin-bottom: 10px;
+            color: #555;
+            text-align: left;
         }
+        .section p {
+            margin: 5px 0;
+            line-height: 1.5;
+            text-align: left;
+        }
+        i {
+            margin-right: 8px;
+        }
+        
+    </style>
+    <style>
+        #cats-popup-container {
+            display: none; 
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 90%;
+            max-width: 600px;
+            background-color: white;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            z-index: 1000; 
+            animation: fadeIn 0.5s ease-in-out;
+            height: auto;
+        }
+            .difficulty-buttons  {
+                margin-bottom: 40px;
+                display: flex; 
+                justify-content: center; 
+                
+            }
+            .difficulty-buttons button {
+                padding: 10px 20px;
+                margin: 2px;
+                border: 1px solid #ddd;
+                background-color: white;
+                cursor: pointer;
+                transition: background-color 0.3s, color 0.3s;
+                font-size: clamp(14px, 2vw, 18px);
+                text-align: center; 
+                box-sizing: border-box; 
+                min-width: 0; 
+                font-weight: 400;
+                width: 30%;
+            }
+                .difficulty-buttons button.active {
+                    background-color: #007bff;
+                    border-color: #007bff;
+                    color: white;
+                    border: 1px solid #ddd;
+                }
+                .difficulty-buttons button.active:hover {
+                    background-color: #007bff;
+                }
+                .difficulty-buttons button:hover {
+                    background-color: #f0f0f0;
+                }
+            
+            #categories-container {
+                display: flex;
+                align-items: stretch;
+                width: 100%;
+                justify-content: space-between;
+                flex-wrap: wrap;
+                height: auto;
+            }
+            #cats-popup-container p {
+                font-size: large;
+                font-weight: bold;
+                margin-top: 20px;
+                margin-bottom: 6px;
+            }
+                .category-div, .all-categories-div {
+                    flex-grow: 1;
+                    flex-shrink: 1;
+                    padding: 10px 20px;
+                    margin: 2px;
+                    border: 1px solid #ddd;
+                    cursor: pointer;
+                    transition: background-color 0.3s, color 0.3s;
+                    font-size: clamp(14px, 2vw, 18px);
+                    text-align: center; 
+                    box-sizing: border-box; 
+                    min-width: 0; 
+                    font-weight: 400;
+                }
+                    .category-div-container > .category-div:last-child, 
+                    .all-categories-div-container > .all-categories-div:last-child {
+                        margin-right: 0; 
+                    }
+                    .category-div:hover, .all-categories-div:hover {
+                        background-color: #f0f0f0;
+                    }
+                    .category-div.active, .all-categories-div.active {
+                        background-color: #007bff;
+                        color: white;
+                        border-color: #007bff;
+                    }
+                    
+        
+        
+        
+        #popup-overlay {
+            display: none; 
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+            z-index: 999;
+        }
+        #cats-popup-close {
+            position: absolute;
+            top: 0;
+            right: 5px;
+            font-size: 24px;
+            color: #666;
+            cursor: pointer;
+        }
+            @keyframes fadeIn {
+                from { opacity: 0; }
+                to { opacity: 1; }
+            }
+                @media (max-height: 740px) {
+                    #cats-popup-container {
+                        height: calc(var(--vh, 1vh) * 80);
+                        overflow-y: scroll; 
+                    }
+                }
     </style>
 </head>
 <body>
-    <h1>Know-it</h1>
-    <form id="quiz-form">
-        <label for="category">Choose a category :</label>
-        <div id="categories-container">
-            <div class="all-categories-div active" data-category="">All Categories</div>
-            
-        </div>
-        <br>
-        <p>Choose the difficulty :</p>
-        <div class="difficulty-buttons">
-            <button type="button" data-difficulty="facile" class="active">easy</button>
-            <button type="button" data-difficulty="moyen">medium</button>
-            <button type="button" data-difficulty="difficile">hard</button>
-        </div>
-        <br>
+
+    <div class="background"></div>
+
+    
+    <div id="quiz-form">
+        
+        <img id="BB1Logo" src="BB1Logo.svg" alt="Description de l'image">
+
+        <span id="start-game" style="cursor: pointer; margin-bottom: 20px; font-weight: 600; font-size: clamp(30px, 10vw, 45px); display: inline-block; ">Launch Game</span>
         <input type="hidden" id="selected-category" name="category" value="">
         <input type="hidden" id="selected-difficulty" name="difficulty" value="">
-        <button type="submit">Start</button>
-    </form>
+        
+    
+        <span id="show-cats-popup">Options</span>
+
+        <div id="popup-overlay"></div>
+        <div id="cats-popup-container">
+            <span id="cats-popup-close">&times;</span>
+
+            <p>Choose the difficulty :</p>
+            <div class="difficulty-buttons">
+                <button type="button" data-difficulty="facile" class="active">Easy</button>
+                <button type="button" data-difficulty="moyen">Medium</button>
+                <button type="button" data-difficulty="difficile">Hard</button>
+            </div>
+
+            <p for="category">Choose a category :</p>
+            <div id="categories-container">
+                <div class="all-categories-div active" data-category="">All Categories</div>
+            </div>
+        </div>
+
+        <span id="show-popup">Rules</span>
+        
+        <div id="popup-overlay"></div>
+        <div id="popup-container">
+            <span id="popup-close">&times;</span>
+
+            <div class="section-centered">
+                <h1> Rules</h1>
+                <p><i class="fas fa-clock"></i>15 seconds</p>
+                <p><i class="fas fa-question-circle"></i>10 questions</p>
+                <p><i class="fas fa-forward"></i>1 skip</p>
+            </div>
+
+            <hr>
+
+            <div class="section">
+                <h2><i class="fas fa-calculator"></i>Points Calculation</h2>
+                <p>Correct answer = +100 points</p>
+                <p>Incorrect answer / Time up = -50 points</p>
+                <p>Speed point = +100/0sec +90/1sec [...] -30/13sec -40/14sec</p>
+                <h3><i class="fas fa-times"></i>Multiplier</h3>
+                <p>Each correct answer applies a multiplier to the points earned. (x2, x3, ...)</p>
+            </div>
+
+            <hr>
+
+            <div class="section">
+                <h2><i class="fas fa-forward"></i>Skip Button</h2>
+                <p>Allows you to skip the current question to keep the multiplier. The question will be asked again at the end of the series (question 11)</p>
+            </div>
+        </div>
+        
+    </div>
+    <footer class="footer"><p class="text-footer" translate="no" style="user-select: none; color: #f4f4f4;">&copy; 2024 Designed and built by C. Bernard<br>Contact me on <a href="https://github.com/cfrBernard">GitHub</a> or <a href="mailto:cfr.bernard@yahoo.com">Email</a>.</p></footer>
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
@@ -78,12 +403,11 @@
                             const categoryDiv = document.createElement('div');
                             categoryDiv.className = 'category-div';
 
-                            const categoryName = category.name.replace(/^Entertainment: /, '');
+                            const categoryName = category.name.replace(/^(Entertainment: |Science: )/, '');
                             categoryDiv.textContent = categoryName;
                             categoryDiv.setAttribute('data-category', category.id);
                             categoriesContainer.appendChild(categoryDiv);
                         });
-                    
 
                         document.querySelectorAll('.category-div, .all-categories-div').forEach(div => {
                             div.addEventListener('click', () => {
@@ -98,10 +422,9 @@
                         });
                     });
             }
-        
+
             fetchCategories();
-        
-            
+
             const defaultDifficulty = 'facile';
             difficultyButtons.forEach(button => {
                 button.addEventListener('click', () => {
@@ -110,27 +433,56 @@
                     selectedDifficultyInput.value = button.getAttribute('data-difficulty');
                 });
             });
-        
-            
+
             const defaultDifficultyButton = Array.from(difficultyButtons).find(button => button.getAttribute('data-difficulty') === defaultDifficulty);
             if (defaultDifficultyButton) {
                 defaultDifficultyButton.classList.add('active');
                 selectedDifficultyInput.value = defaultDifficultyButton.getAttribute('data-difficulty');
             }
-        
-            document.getElementById('quiz-form').addEventListener('submit', function(e) {
-                e.preventDefault();
+
+            document.getElementById('start-game').addEventListener('click', function() {
                 const category = selectedCategoryInput.value;
                 const difficulty = selectedDifficultyInput.value;
-            
+
                 let quizUrl = 'game.html?';
                 if (category) quizUrl += `category=${category}&`;
                 if (difficulty) quizUrl += `difficulty=${difficulty}`;
-            
+
                 window.location.href = quizUrl;
             });
         });
+    </script>
+    <script>
+        document.getElementById('show-cats-popup').addEventListener('click', () => {
+            document.getElementById('popup-overlay').style.display = 'block';
+            document.getElementById('cats-popup-container').style.display = 'block';
+        });
 
+        document.getElementById('cats-popup-close').addEventListener('click', () => {
+            document.getElementById('popup-overlay').style.display = 'none';
+            document.getElementById('cats-popup-container').style.display = 'none';
+        });
+
+        document.getElementById('popup-overlay').addEventListener('click', () => {
+            document.getElementById('popup-overlay').style.display = 'none';
+            document.getElementById('cats-popup-container').style.display = 'none';
+        });
+    </script>
+    <script>
+        document.getElementById('show-popup').addEventListener('click', () => {
+            document.getElementById('popup-overlay').style.display = 'block';
+            document.getElementById('popup-container').style.display = 'block';
+        });
+
+        document.getElementById('popup-close').addEventListener('click', () => {
+            document.getElementById('popup-overlay').style.display = 'none';
+            document.getElementById('popup-container').style.display = 'none';
+        });
+
+        document.getElementById('popup-overlay').addEventListener('click', () => {
+            document.getElementById('popup-overlay').style.display = 'none';
+            document.getElementById('popup-container').style.display = 'none';
+        });
     </script>
 </body>
 </html>

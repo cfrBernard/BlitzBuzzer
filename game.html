@@ -482,10 +482,10 @@
     <style>
         #show-menu-popup {
             position: absolute;
-            top: 1vh;
-            right: 1vh;
+            top: 1.5vh;
+            right: 1.5vh;
             color: white;
-            font-size: large;
+            font-size: clamp(22px, 2vw, 30px); 
         }
             #show-menu-popup i {
                 margin-left: 5px;
@@ -495,11 +495,7 @@
                 color: #ddd;
                 cursor: pointer;
             }
-            @media (max-width: 940px) {
-                #show-menu-popup {
-                    right: 1vh;
-                }
-            }
+            
        #menu-popup-container {
             display: none; 
             position: fixed;
@@ -592,7 +588,7 @@
     
     
     <span id="show-menu-popup">
-        <i class="fas fa-play"></i>/<i class="fas fa-pause"></i>
+        <i class="fas fa-pause"></i>
     </span>
 
 
@@ -628,7 +624,7 @@
             <p id="score"></p>
             <p id="time-score"></p>
             <button id="restart-button" onclick="location.reload()" style="user-select: none;">Restart<i class="fas fa-redo end-icon"></i></button>
-            <button id="home-button" onclick="window.location.href='index.html'" style="user-select: none;">Home<i class="fas fa-door-open end-icon"></i></i></button>
+            <button id="home-button" onclick="window.location.href='index.html'" style="user-select: none;">Quit<i class="fas fa-door-open end-icon"></i></i></button>
         </div>
         <div class="question-container">
             <i id="skip-icon" class="fas fa-forward"></i>
@@ -1011,7 +1007,7 @@
 
 
 
-                document.getElementById('show-menu-popup').addEventListener('click', () => {
+            document.getElementById('show-menu-popup').addEventListener('click', () => {
                 document.getElementById('menu-popup-overlay').style.display = 'block';
                 document.getElementById('menu-popup-container').style.display = 'block';
                 pauseTimer();
