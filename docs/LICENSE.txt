@@ -1,0 +1,21 @@
+All data provided by the API is available under the Creative Commons Attribution-ShareAlike 4.0 International License (CC BY-SA 4.0). API PROVIED BY https://opentdb.com/api_config.php
+You are free to share, adapt, and use the data for any purpose, even commercially, as long as you provide appropriate credit and distribute any derivative works under the same license.
+
+
+Creative Commons Attribution-ShareAlike 4.0 International License (CC BY-SA 4.0) This work is licensed under the terms of the Creative Commons Attribution-ShareAlike 4.0 International License. 
+To view a copy of this license, visit https://creativecommons.org/licenses/by-sa/4.0/ or send a letter to Creative Commons, PO Box 1866, Mountain View, CA 94042, USA.
+
+You are free to:
+Share — copy, distribute, and communicate the material by any means and in any format.
+Adapt — remix, transform, and build upon the material for any purpose, even commercially.
+Under the following terms:
+Attribution — You must give appropriate credit, provide a link to the license, and indicate if changes were made. You may do so in any reasonable manner, but not in any way that suggests the licensor endorses you or your use.
+
+ShareAlike — If you remix, transform, or build upon the material, you must distribute your contributions under the same license as the original.
+
+No additional restrictions:
+You may not apply legal terms or technological measures that legally restrict others from doing anything the license permits.
+
+
+
+© 2024 Designed and built by C. Bernard. Please note that the UI design, logos and original code on this site are not covered by the Creative Commons license. All rights reserved.
