@@ -37,7 +37,8 @@ body p {
     flex: 1;
 }
     .GitHub {
-        width: 100px;
+        width: 40px;
+        height: 40px;
         border-radius: 8px;
         font-size: medium;
         font-weight: bold;
@@ -46,17 +47,18 @@ body p {
         justify-content: space-around;
         align-items: flex-end;
         position: absolute;
-        top: 0.5em;
-        right: 0.5em;
-        background: linear-gradient(160deg, #00d2ff, #3a7bd5);
-        box-shadow: 0 0 10px rgba(0,0,0,0.5);
-        border: solid 2px #1c1c1e;
-        color: #1c1c1e;
+        top: 0.7em;
+        right: 0.6em;
+        background-color: transparent;
+        border: none;
+        outline: none;
+        color: inherit;
+        font: inherit;
     }
         #github-button {
-            height: 20px;
-            width: 20px;
-            margin-left: 4px;
+            height: 130%;
+            width: 130%;
+            
         }
     #start-game {
         cursor: pointer;
