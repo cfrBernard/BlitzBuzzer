@@ -41,12 +41,14 @@
             position: absolute;
             top: 0.5em;
             right: 0.5em;
-            background: white;
+            background: linear-gradient(160deg, #00d2ff, #3a7bd5);
             box-shadow: 0 0 10px rgba(0,0,0,0.5);
+            border: solid 2px black;
         }
         #github-button {
             height: 20px;
             width: 20px;
+            margin-left: 2px;
         }
     
         #start-game {
@@ -501,9 +503,7 @@
     </div>
 
     <div id="container">
-        <button class="GitHub" onclick="window.location.href='https://github.com/cfrBernard';">
-            GitHub <img id="github-button" src="github.svg" alt="github">
-        </button>
+        <button class="GitHub" onclick="window.location.href='https://github.com/cfrBernard';">GitHub<img id="github-button" src="github.svg" alt="github"></button>
         <div id="quiz-form">
 
             <img id="BB1Logo" src="BB1Logo.svg" alt="Blitz Buzzer">
