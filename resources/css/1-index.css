@@ -36,30 +36,14 @@ body p {
     flex-direction: column;
     flex: 1;
 }
-    .GitHub {
-        width: 40px;
-        height: 40px;
-        border-radius: 8px;
-        font-size: medium;
-        font-weight: bold;
-        display: flex;
-        flex-direction: row;
-        justify-content: space-around;
-        align-items: flex-end;
+    #github-button {
+        height: 35px;
+        width: 35px;
         position: absolute;
-        top: 0.7em;
-        right: 0.6em;
-        background-color: transparent;
-        border: none;
-        outline: none;
-        color: inherit;
-        font: inherit;
+        top: 0.5em;
+        right: 0.5em;
+        cursor: pointer;
     }
-        #github-button {
-            height: 130%;
-            width: 130%;
-            
-        }
     #start-game {
         cursor: pointer;
         margin-bottom: 30px;
