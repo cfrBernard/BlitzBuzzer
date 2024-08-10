@@ -29,6 +29,25 @@
             flex-direction: column;
             flex: 1;
         }
+        .GitHub {
+            width: 100px;
+            border-radius: 8px;
+            font-size: medium;
+            font-weight: bold;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+            align-items: flex-end;
+            position: absolute;
+            top: 0.5em;
+            right: 0.5em;
+            background: white;
+            box-shadow: 0 0 10px rgba(0,0,0,0.5);
+        }
+        #github-button {
+            height: 20px;
+            width: 20px;
+        }
     
         #start-game {
             cursor: pointer;
@@ -482,9 +501,12 @@
     </div>
 
     <div id="container">
+        <button class="GitHub" onclick="window.location.href='https://github.com/cfrBernard';">
+            GitHub <img id="github-button" src="github.svg" alt="github">
+        </button>
         <div id="quiz-form">
 
-            <img id="BB1Logo" src="BB1Logo.svg" alt="Description de l'image">
+            <img id="BB1Logo" src="BB1Logo.svg" alt="Blitz Buzzer">
 
             <span class="launch" style="user-select: none" id="start-game">Launch Game</span>
             <input type="hidden" id="selected-category" name="category" value="">
@@ -553,7 +575,7 @@
                 <hr>
                 <p>© 2024 Designed and built by C. Bernard. Please note that the UI design, logos and original code on this site are not covered by the Creative Commons license. All rights reserved.</p>
             </div>
-            <footer class="footer"><p class="text-footer" translate="no" style="user-select: none; color: #f4f4f4;">&copy; 2024 Designed and built by <br> C. Bernard. Contact me on <br><a href="https://github.com/cfrBernard">GitHub</a> or <a href="mailto:cfr.bernard@yahoo.com">email</a> / <a id="show-legal-popup" style="text-decoration: underline; cursor: pointer; " >Legal</a> </p></footer>
+            <footer class="footer"><p class="text-footer" translate="no" style="user-select: none; color: #f4f4f4;">&copy; 2024 Designed and built by <br> C. Bernard. Contact me via <br> <a href="mailto:cfr.bernard@yahoo.com">Email</a> / <a id="show-legal-popup" style="text-decoration: underline; cursor: pointer; " >Legal notice</a> </p></footer>
         </div>
         
     </div> 
