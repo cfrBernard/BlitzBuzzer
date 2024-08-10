@@ -3,158 +3,152 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Know-it - Home</title>
+    <link rel="icon" href="icon.svg" type="svg/x-icon">
+    <link rel="shortcut icon" href="icon.svg" type="svg/x-icon">
+    <title>Blitz Buzzer</title>
     <style>
-
         @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css');
-
-       /* Style de base du corps */
+    
         body {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            height: calc(var(--vh, 1vh) * 100); 
+            height: calc(var(--vh, 1vh) * 100);
             display: flex;
             background-color: #f4f4f4;
             flex-direction: column;
             overflow-y: auto;
         }
-        
-        /* Style des paragraphes du corps */
+    
         body p {
             text-align: center;
         }
-        
-        /* Conteneur principal */
+    
         #container {
-            height: 100%;
-            width: 100%;
             display: flex;
             flex-direction: column;
+            flex: 1;
         }
-        
-        /* Style du bouton de démarrage */
+    
         #start-game {
-            cursor: pointer; 
-            margin-bottom: 30px; 
-            font-weight: 900; 
+            cursor: pointer;
+            margin-bottom: 30px;
+            font-weight: 900;
         }
-        
-        /* Logo */
+    
         #BB1Logo {
-            width: 100%; /* Largeur du logo relative à son conteneur */
-            height: auto; /* Conserve les proportions du logo */
-            max-width: 320px; /* Limite la largeur maximale du logo */
-            margin-bottom: 40px; /* Marge en bas pour espacer du texte */
-            align-self: flex-start; /* Aligne le logo au début du conteneur */
+            width: 100%;
+            height: auto;
+            max-width: 320px;
+            margin-bottom: 40px;
+            align-self: flex-start;
         }
-        
-        /* Formulaire du quiz */
+    
         #quiz-form {
             display: flex;
             flex-direction: column;
-            align-items: flex-start; /* Aligne tous les éléments enfants à gauche */
-            position: absolute;
-            margin-left: 1vh;
-            top: 5%;
-            width: 20%; /* Largeur de base du formulaire du quiz */
-            max-width: 100%; /* Assure que le formulaire ne dépasse pas la largeur de l'écran */
-            box-sizing: border-box; /* Inclut le padding et les bordures dans la largeur totale */
+            align-items: flex-start;
+            margin: 5% 1vh 20px 1vh;
+            width: 20%;
+            max-width: 100%;
+            box-sizing: border-box;
+            position: relative;
         }
-        
-        /* Style des éléments span dans #quiz-form */
+    
         #quiz-form span {
-            width: 100%; /* Le span occupe 100% de la largeur de son conteneur */
-            font-size: 2vw; /* Taille de police relative à la largeur de #quiz-form */
-            min-width: 100px; /* Largeur minimale pour le span */
-            min-height: 40px; /* Hauteur minimale du span pour garantir la lisibilité */
-            white-space: nowrap; /* Empêche le texte de se casser sur plusieurs lignes */
-             /* Marge en bas pour espacer des autres éléments */
+            width: 100%;
+            font-size: 2vw;
+            min-width: 100px;
+            white-space: nowrap;
             margin-left: 1vh;
             cursor: pointer;
-            color: #f0f0f0;
-            text-align: left; /* Aligne le texte à gauche à l'intérieur du span */
-            box-sizing: border-box; /* Inclut le padding et les bordures dans la largeur totale */
-            overflow: hidden; /* Cache tout débordement de texte */
-            text-overflow: ellipsis; /* Ajoute des points de suspension si le texte déborde */
+            text-align: left;
+            box-sizing: border-box;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
-
-
-        
+    
+        .launch {
+            color: #f4f4f4;
+        }
+    
         .options {
             margin-bottom: 5px;
             font-weight: 600;
+            color: #f4f4f4;
         }
+    
         .rules {
-            margin-bottom: 0;
+            margin-bottom: 2em;
             font-weight: 600;
+            color: #f4f4f4;
         }
-        
-        /* Couleur du texte au survol */
+    
         #quiz-form span:hover {
             color: white;
+            text-shadow: 0 0 10px rgba(0,0,0,0.5);
         }
-        
-        /* Ajustement pour les petits écrans */
+    
         @media (max-width: 768px) {
             #quiz-form {
-                top: 5%; /* Positionnement ajusté */
-                width: 50%; /* Largeur ajustée pour les petits écrans */
+                top: 10%;
+                width: 50%;
             }
-        
+    
             #quiz-form span {
-                font-size: 1.3rem; /* Ajuste la taille de la police pour les écrans moyens à petits */
+                font-size: 1.3rem;
             }
-        
+    
             #BB1Logo {
-                max-width: 200px; /* Ajuste la largeur maximale du logo pour les petits écrans */
+                max-width: 200px;
+                margin-bottom: 30px;
             }
         }
-        
-        /* Ajustement pour les très petits écrans (smartphones) */
+    
         @media (max-width: 480px) {
             #quiz-form {
-                width: 80%; /* Largeur ajustée pour les très petits écrans */
-                top: 5%; /* Ajuste le positionnement pour les très petits écrans */
+                width: 80%;
+                top: 15%;
             }
-        
+    
             #quiz-form span {
-                font-size: 1.6rem; /* Ajuste la taille de la police pour les très petits écrans */
+                font-size: 1.6rem;
             }
-        
+    
             #BB1Logo {
-                max-width: 220px; /* Ajuste la largeur maximale du logo pour les très petits écrans */
+                max-width: 220px;
+                margin-bottom: 20px;
             }
         }
-        
-        /* Ajustement pour les écrans avec une petite hauteur */
+    
         @media (max-height: 480px) {
             #quiz-form {
-                top: 2%; /* Positionnement ajusté */
+                top: 0%;
             }
         }
-        
-        /* Style du pied de page */
+    
         footer {
-            position: absolute;
-            font-size: small;
+            font-size: 16px;
             text-align: left;
-            bottom: 0.5em;
-            left: 1em;
-            
+            width: 100%;
+            box-sizing: border-box;
+            margin-top: auto;
         }
+    
+        @media (max-width: 480px) {
+            footer {
+                font-size: 14px;
+            }
+        }
+    
         footer p {
             text-align: left;
+            margin-left: 0.7em;
         }
-        
-        /* Style des liens */
+    
         a {
             color: #f4f4f4;
         }
-
-
-
-
     </style>
     <style>
         .background {
@@ -164,9 +158,17 @@
             background-repeat: no-repeat; 
             height: 100vh;
             width: 100vw;
-            position: absolute;
-            z-index: -1;
+            position: fixed;
+            top: 0; 
+            left: 0; 
+            z-index: -1; 
         }
+            .blob1 {
+                 position: absolute;
+                min-width: 1200px;
+                min-height: 1200px;
+                transform:  translate(-30%) translateY(10%);
+            }
     </style>
     <style>
         #popup-container {
@@ -218,8 +220,8 @@
         }
         #popup-close {
             position: absolute;
-            top: 10px;
-            right: 10px;
+            top: 0;
+            right: 5px;
             font-size: 24px;
             color: #666;
             cursor: pointer;
@@ -304,13 +306,13 @@
                 width: 30%;
             }
                 .difficulty-buttons button.active {
-                    background-color: #007bff;
+                    background: linear-gradient(160deg, #00d2ff, #3a7bd5);
                     border-color: #007bff;
                     color: white;
                     border: 1px solid #ddd;
                 }
                 .difficulty-buttons button.active:hover {
-                    background-color: #007bff;
+                    background: linear-gradient(160deg, #00d2ff, #3a7bd5);
                 }
                 .difficulty-buttons button:hover {
                     background-color: #f0f0f0;
@@ -352,7 +354,7 @@
                         background-color: #f0f0f0;
                     }
                     .category-div.active, .all-categories-div.active {
-                        background-color: #007bff;
+                        background: linear-gradient(160deg, #00d2ff, #3a7bd5);
                         color: white;
                         border-color: #007bff;
                     }
@@ -389,41 +391,126 @@
                     }
                 }
     </style>
+    <style>
+        #legal-popup-container {
+            display: none; 
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 90%;
+            max-width: 600px;
+            background-color: white;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            z-index: 1000; 
+            animation: fadeIn 0.5s ease-in-out;
+            height: auto;
+        }
+            #legal-popup-container span {
+                text-align: end;
+            }
+       
+            #legal-popup-container p {
+                font-size: large;
+                font-weight: bold;
+                text-align: start;
+                margin-top: 20px;
+                margin-bottom: 6px;
+            }
+            #legal-popup-container h1 {
+                
+                text-align: center;
+            }
+                
+        #popup-overlay {
+            display: none; 
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+            z-index: 999;
+        }
+        #legal-popup-close {
+            position: absolute;
+            top: 0;
+            right: 5px;
+            font-size: 24px;
+            color: #666;
+            cursor: pointer;
+        }
+            @keyframes fadeIn {
+                from { opacity: 0; }
+                to { opacity: 1; }
+            }
+                @media (max-height: 740px) {
+                    #legal-popup-container {
+                        height: calc(var(--vh, 1vh) * 50);
+                        overflow-y: scroll; 
+                    }
+                    #legal-popup-container p {
+                        font-size: medium; 
+                        margin: 1em;
+                    }
+                }
+    </style>
 </head>
 <body>
 
-    <div class="background"></div>
+    <div class="background">
+        <svg class="blob1" viewBox="-100 -100 250 250" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+                <!-- Dégradé linéaire -->
+                <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" style="stop-color:#00d2ff;stop-opacity:1" />
+                    <stop offset="100%" style="stop-color:#3a7bd5;stop-opacity:1" />
+                </linearGradient>
+                
+                <!-- Filtre d'ombre portée -->
+                <filter id="shadow" x="0" y="0" width="150%" height="150%">
+                    <feDropShadow dx="5" dy="5" stdDeviation="3" flood-color="rgba(0, 0, 0, 0.5)" />
+                </filter>
+            </defs>
+            
+            <!-- Chemin avec dégradé et ombre portée -->
+            <path fill="url(#grad1)" filter="url(#shadow)" d="M42.3,-65.2C57.4,-56,74.1,-48.7,83.2,-35.9C92.3,-23.1,93.8,-4.7,90.7,12.6C87.5,29.9,79.6,46,67.3,56.1C55.1,66.2,38.4,70.2,21.9,75.5C5.3,80.9,-11.1,87.5,-25.8,84.7C-40.5,81.9,-53.4,69.7,-63.1,56C-72.9,42.4,-79.4,27.4,-83.1,11.1C-86.7,-5.2,-87.5,-22.8,-82,-38.5C-76.5,-54.3,-64.7,-68.3,-50,-77.7C-35.3,-87.1,-17.6,-91.8,-2,-88.7C13.6,-85.5,27.1,-74.4,42.3,-65.2Z" />
+        </svg>
+        
+    </div>
 
     <div id="container">
         <div id="quiz-form">
 
             <img id="BB1Logo" src="BB1Logo.svg" alt="Description de l'image">
 
-            <span class="launch" id="start-game">Launch Game</span>
+            <span class="launch" style="user-select: none" id="start-game">Launch Game</span>
             <input type="hidden" id="selected-category" name="category" value="">
             <input type="hidden" id="selected-difficulty" name="difficulty" value="">
 
         
-            <span class="options" id="show-cats-popup">Options</span>
+            <span class="options" style="user-select: none" id="show-cats-popup">Options</span>
 
             <div id="popup-overlay"></div>
             <div id="cats-popup-container">
                 <span id="cats-popup-close">&times;</span>
 
-                <p>Choose the difficulty :</p>
+                <p style="user-select: none">Choose the difficulty :</p>
                 <div class="difficulty-buttons">
                     <button type="button" data-difficulty="facile" class="active">Easy</button>
                     <button type="button" data-difficulty="moyen">Medium</button>
                     <button type="button" data-difficulty="difficile">Hard</button>
                 </div>
 
-                <p for="category">Choose a category :</p>
+                <p for="category" style="user-select: none">Choose a category :</p>
                 <div id="categories-container">
-                    <div class="all-categories-div active" data-category="">All Categories</div>
+                    <div class="all-categories-div active" data-category="" style="user-select: none">All Categories</div>
                 </div>
             </div>
 
-            <span class="rules" id="show-popup">Rules</span>
+            <span class="rules" style="user-select: none" id="show-popup">Rules</span>
 
             <div id="popup-overlay"></div>
             <div id="popup-container">
@@ -456,9 +543,24 @@
                 
             </div>
             
+            <div id="popup-overlay"></div>
+            <div id="legal-popup-container">
+                <span id="legal-popup-close">&times;</span>
+
+                <h1>Legal Notice</h1>
+                <hr>
+                <p>All data provided by the API is available under the Creative Commons Attribution-ShareAlike 4.0 International License (CC BY-SA 4.0). You are free to share, adapt, and use the data for any purpose, even commercially, as long as you provide appropriate credit and distribute any derivative works under the same license. For more information, please visit <a href="https://creativecommons.org/licenses/by-sa/4.0/"><img src="https://licensebuttons.net/l/by-sa/4.0/80x15.png"></a></p>
+                <hr>
+                <p>© 2024 Designed and built by C. Bernard. Please note that the UI design, logos and original code on this site are not covered by the Creative Commons license. All rights reserved.</p>
+            </div>
+            
         </div>
-        <footer class="footer"><p class="text-footer" translate="no" style="user-select: none; color: #f4f4f4;">&copy; 2024 Designed and built by C. Bernard<br>Contact me on <a href="https://github.com/cfrBernard">GitHub</a> or <a href="mailto:cfr.bernard@yahoo.com">Email</a>.</p></footer>
-    </div>
+        <footer class="footer"><p class="text-footer" translate="no" style="user-select: none; color: #f4f4f4;">&copy; 2024 Designed and built by <br> C. Bernard. Contact me on <br><a href="https://github.com/cfrBernard">GitHub</a> or <a href="mailto:cfr.bernard@yahoo.com">email</a> / <a id="show-legal-popup" style="text-decoration: underline; cursor: pointer; " >Legal</a> </p></footer>
+    </div> 
+
+    
+    
+    
     
     <script>
         document.addEventListener('DOMContentLoaded', () => {
@@ -555,6 +657,22 @@
         document.getElementById('popup-overlay').addEventListener('click', () => {
             document.getElementById('popup-overlay').style.display = 'none';
             document.getElementById('popup-container').style.display = 'none';
+        });
+    </script>
+    <script>
+        document.getElementById('show-legal-popup').addEventListener('click', () => {
+            document.getElementById('popup-overlay').style.display = 'block';
+            document.getElementById('legal-popup-container').style.display = 'block';
+        });
+
+        document.getElementById('legal-popup-close').addEventListener('click', () => {
+            document.getElementById('popup-overlay').style.display = 'none';
+            document.getElementById('legal-popup-container').style.display = 'none';
+        });
+
+        document.getElementById('popup-overlay').addEventListener('click', () => {
+            document.getElementById('popup-overlay').style.display = 'none';
+            document.getElementById('legal-popup-container').style.display = 'none';
         });
     </script>
 </body>
