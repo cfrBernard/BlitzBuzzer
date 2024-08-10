@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="../resources/img/icon.svg" type="svg/x-icon">
+    <link rel="shortcut icon" href="../resources/img/icon.svg" type="svg/x-icon">
+    <link rel="stylesheet" href="../resources/css/2-game.css">
+    <link rel="stylesheet" href="../resources/css/rules-popup-game.css">
+    <link rel="stylesheet" href="../resources/css/menu-popup-game.css">
+
+    <title>Blitz Buzzer - Game</title>
+    
+</head>
+<body>
+    <div class="background"></div>
+    
+    <span id="show-menu-popup">
+        <i class="fas fa-pause"></i>
+    </span>
+
+    <div id="menu-popup-overlay"></div>
+    <div id="menu-popup-container">
+        
+        <div id="top-menu-popup">
+            <h1 style="user-select: none;">PAUSED</h1>
+        </div>
+        
+        <button class="menu-button" id="menu-popup-close" style="user-select: none;"><i class="fas fa-play"></i>RESUME</button>
+        <button class="menu-button" id="show-popup" style="user-select: none;"><i class="fas fa-question-circle"></i>RULES</button>
+        <button class="menu-button" onclick="window.location.href='../index.html'" style="user-select: none;"><i class="fas fa-door-open end-icon"></i>QUIT</button>
+
+        <footer class="footer"><p class="text-footer" translate="no" style="user-select: none;">&copy; 2024 Designed and built by C. Bernard<br>Contact me on <a href="https://github.com/cfrBernard">GitHub</a> or <a href="mailto:cfr.bernard@yahoo.com">Email</a>.</p></footer>
+    </div>
+
+    <div class="container">
+        <div id="timer-container" class="timer-container">
+            <p id="timer" class="timer" translate="no" style="user-select: none;">15s</p>
+        </div>
+        <button id="pass-button" style="user-select: none;"><span><i class="fas fa-forward"></i>Skip</span></button>
+        <div id="pass-button-display"></div>
+        <div id="quiz-end-container" class="quiz-end-container" style="display: none;">
+            <p id="score"></p>
+            <p id="time-score"></p>
+            <button id="restart-button" onclick="location.reload()" style="user-select: none;">Restart<i class="fas fa-redo end-icon"></i></button>
+            <button id="home-button" onclick="window.location.href='../index.html'" style="user-select: none;">Quit<i class="fas fa-door-open end-icon"></i></i></button>
+        </div>
+        <div class="question-container">
+            <i id="skip-icon" class="fas fa-forward"></i>
+            <div id="container-top">
+                <div id="title">
+                <h2 id="question-title" style="user-select: none;">Question</h2>
+                </div>
+            
+                <div id="question-display">
+                    <p id="question-text">Wait...</p>
+                </div>
+            </div>
+            <div id="container-bot">
+                <div class="answers">
+                    <!-- JavaScript -->
+                </div>
+                <button id="next-button" class="next-button" style="vertical-align:middle" style="user-select: none;"><span>Next <i class="fas fa-arrow-right next-icon"></i></span></button>
+            </div>
+        </div>
+    </div>
+
+    <div id="popup-overlay"></div>
+    <div id="popup-container">
+        <span id="popup-close">&times;</span>
+        
+        <div class="section-centered">
+            <h1> Rules</h1>
+            <p><i class="fas fa-clock"></i>15 seconds</p>
+            <p><i class="fas fa-question-circle"></i>10 questions</p>
+            
+            <p><i class="fas fa-forward"></i>1 skip</p>
+        </div>
+
+        <hr>
+        
+        <div class="section">
+            <h2><i class="fas fa-calculator"></i>Points Calculation</h2>
+            <p>Correct answer = +100 points</p>
+            <p>Incorrect answer / Time up = -50 points</p>
+            <p>Speed point = +100/0sec +90/1sec [...] -30/13sec -40/14sec</p>
+            <h3><i class="fas fa-times"></i>Multiplier</h3>
+            <p>Each correct answer applies a multiplier to the points earned. (x2, x3, ...)</p>
+        </div>
+
+        <hr>
+
+        <div class="section">
+            <h2><i class="fas fa-forward"></i>Skip Button</h2>
+            <p>Allows you to skip the current question to keep the multiplier. The question will be asked again at the end of the series (question 11)</p>
+        </div>
+    </div>
+
+    <script src="../resources/scripts/2-game.js"></script>
+</body>
+</html>
