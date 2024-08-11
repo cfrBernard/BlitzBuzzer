@@ -30,7 +30,7 @@
         }
         @media (max-height: 740px) {
             #popup-container {
-                height: calc(var(--vh, 1vh) * 80);
+                height: calc(var(--vh, 1vh) * 60);
                 overflow-y: scroll; 
             }
         }

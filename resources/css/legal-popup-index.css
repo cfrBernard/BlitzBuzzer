@@ -54,7 +54,7 @@
     }
         @media (max-height: 740px) {
             #legal-popup-container {
-                height: calc(var(--vh, 1vh) * 50);
+                height: calc(var(--vh, 1vh) * 60);
                 overflow-y: scroll; 
             }
             #legal-popup-container p {

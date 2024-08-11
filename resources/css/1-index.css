@@ -9,10 +9,6 @@ body {
     background-color: #1c1c1e;
     flex-direction: column;
     overflow-y: auto;
-    -webkit-user-select: none; 
-    -moz-user-select: none; 
-    -ms-user-select: none; 
-    user-select: none;
 }
     .background {
         background: linear-gradient(160deg, #00d2ff, #3a7bd5);
