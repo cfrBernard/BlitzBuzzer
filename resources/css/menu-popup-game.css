@@ -26,11 +26,9 @@
     border: 1px solid #ddd;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0,0,0,0.1);
-    
     z-index: 1000; 
     animation: fadeIn 0.5s ease-in-out;
     height: auto;
-    
 }
     @keyframes fadeIn {
         from { opacity: 0; }
@@ -87,11 +85,18 @@
 #top-menu-popup {
     position: relative;
     top: 0;
-    color: #999;
+    font-size: 18px;
+    background: linear-gradient(160deg, white, #00d2ff, #3a7bd5);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
     text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
 }
 .text-footer {
     font-size: 10px;
     margin-top: 40px;
     margin-bottom: 5px;
+}
+#menu-popup-container a {
+    color: #3a7bd5;
 }
