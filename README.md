@@ -4,8 +4,8 @@ BlitzBuzzer is an interactive quiz web application built using HTML, CSS, and Ja
 
 [**https://cfrbernard.github.io/Interactive-quiz**](https://cfrbernard.github.io/Interactive-quiz/)
 
-![Version](https://img.shields.io/badge/version-v1.1.0-blue)
-![License](https://img.shields.io/github/license/cfrBernard/MaskMapWizard)
+[![Version](https://img.shields.io/badge/version-v1.1.0-blue)](https://cfrbernard.github.io/Interactive-quiz/)
+[![License](https://img.shields.io/github/license/cfrBernard/MaskMapWizard)](./LICENSE.md)
 
 ---
 
@@ -34,3 +34,4 @@ BlitzBuzzer is an interactive quiz web application built using HTML, CSS, and Ja
 
 ## License:
 This project is licensed under the MIT License. See the [LICENSE](LICENSE.md) file for more details.
+
